@@ -63,15 +63,14 @@ export const Reports = () => {
         setData(sampleObj);
         return;
       }
+      setLoading(true);
       const res = await fetch(
         `https://wisechamps.onrender.com/reports?email=${email}`
       );
 
-      setLoading(true);
       const res2 = await res.json();
       setData(res2.user);
       setRank(res2.user[0].rank);
-      setLoading(false);
       res2.user[0].rank <= 10 &&
         toast({
           position: "top",
@@ -107,6 +106,7 @@ export const Reports = () => {
             </p>
           ),
         });
+      setLoading(false);
       return;
     } catch (error) {
       console.log(error);
