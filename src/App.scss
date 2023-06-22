@@ -1,6 +1,10 @@
  /* ------------------------------Loading---------------------------- */
 
- .container {
+ body {
+   position: unset !important;
+ }
+
+ .loadingContainer {
    position: absolute;
    top: 50%;
    left: 50%;
@@ -12,7 +16,7 @@
    background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
  }
 
- .container span {
+ .loadingContainer span {
    position: absolute;
    border-radius: 50%;
    height: 100%;
@@ -21,23 +25,23 @@
    background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
  }
 
- .container span:nth-of-type(1) {
+ .loadingContainer span:nth-of-type(1) {
    filter: blur(5px);
  }
 
- .container span:nth-of-type(2) {
+ .loadingContainer span:nth-of-type(2) {
    filter: blur(10px);
  }
 
- .container span:nth-of-type(3) {
+ .loadingContainer span:nth-of-type(3) {
    filter: blur(25px);
  }
 
- .container span:nth-of-type(4) {
+ .loadingContainer span:nth-of-type(4) {
    filter: blur(50px);
  }
 
- .container::after {
+ .loadingContainer::after {
    content: "";
    position: absolute;
    top: 10px;
@@ -90,10 +94,7 @@
  }
 
  .errorDiv {
-   height: 100vh;
- }
-
- .errorDiv {
+   height: 80vh;
    background-image: url('https://assets.codepen.io/1538474/star.svg'), linear-gradient(to bottom, #05007A, #4D007D);
    margin: 0;
    background-attachment: fixed;
@@ -177,7 +178,7 @@
    animation: floating 3s infinite ease-in-out;
 
    @include breakpoint(mobile) {
-     top: 2vmin;
+     top: 15vmin;
    }
  }
 
@@ -195,8 +196,9 @@
 
  //  -----------------------------UserData---------------------------
  .reportData {
-   padding: 20px;
+   padding: 10px 20px;
    color: #241E20;
+   margin-bottom: 120px !important;
  }
 
  .reportData .headerLogo {
@@ -205,21 +207,26 @@
    align-items: center;
  }
 
- .reportData .headerLogo img {
-   width: 150px;
+ .reportData .headerLogo>img {
+   width: 130px;
+ }
+
+ .reportData .headerLogo>div>img {
+   width: 50px;
  }
 
  .reportData .headerLine {
-   margin: 10px 0 30px 0;
-   height: 8px;
+   margin: 10px 0 20px 0;
+   height: 5px;
    background-color: #0799D8;
  }
 
  .reportData .percentile {
-   font-size: 19px;
-   text-align: center;
    margin-bottom: 30px;
-   font-weight: 500;
+   font-weight: 600;
+   display: flex;
+   align-items: center;
+   gap: 10px;
 
    @include breakpoint(desktop) {
      font-size: 40px;
@@ -228,9 +235,19 @@
    }
  }
 
- .reportData .percentile span {
-   font-size: 30px;
-   padding: 5px 35px 5px 10px;
+ .reportData .percentile>strong {
+   font-size: 25px;
+   font-weight: 600;
+ }
+
+ .reportData .percentile>span:nth-child(3) {
+   font-size: 40px;
+   margin: 0 10px
+ }
+
+ .reportData .percentile>span:nth-child(2) {
+   font-size: 40px;
+   padding: 5px 32px 2px 12px;
    font-weight: 800;
    --border-size: 3px;
    --border-angle: 0turn;
@@ -356,15 +373,9 @@
    gap: 2px;
  }
 
- .reportData .section2 {
-   display: flex;
-   justify-content: center;
-   align-items: center
- }
-
- .reportData .section2>div>p {
-   font-size: 20px;
-   font-weight: 700;
+ .reportData .section2 div>p {
+   font-size: 10px;
+   font-weight: 600;
    color: #0799D8;
    margin-bottom: 10px;
 
@@ -373,25 +384,21 @@
    }
  }
 
- .reportData .section2>div {
-   padding: 10px 10px 40px 10px;
-   text-align: center;
-   border-bottom: 1px solid #777777;
+ .reportData .section2 {
    margin-bottom: 20px;
+ }
+
+ .reportData .section2 div {
+   text-align: center;
 
    @include breakpoint(desktop) {
      font-size: 45px;
-     padding: 10px 40px 40px 40px;
+     padding: 0px 0px 40px 0px;
    }
  }
 
- .reportData .section2>div:nth-child(1) {
-   border-right: 1px solid #777777;
- }
-
-
  .reportData .totalAttempted strong:nth-child(1) {
-   font-size: 60px;
+   font-size: 30px;
    font-weight: 600;
 
    @include breakpoint(desktop) {
@@ -400,9 +407,8 @@
  }
 
  .reportData .totalAttempted small {
-   font-size: 30px;
+   font-size: 20px;
    font-weight: 600;
-   margin-top: 10px;
 
    @include breakpoint(desktop) {
      font-size: 50px;
@@ -445,29 +451,47 @@
  }
 
  .reportData .nationalRank p {
-   font-size: 15px;
+   letter-spacing: -0.3px;
+   font-size: 13px;
+   font-weight: 500;
+   margin: 10px 0 20px 0;
+
+   @include breakpoint(desktop) {
+     font-size: 25px;
+     margin: 20px 0 30px 0;
+   }
 
    @include breakpoint(desktop) {
      font-size: 20px;
    }
  }
 
- .reportData .footer {
-   text-align: center;
-   margin-top: 50px;
- }
+ //  -----------------------Topics----------------------------
 
- .reportData .footer div,
- a {
-   font-size: 20px;
+ .topics>h1 {
+   font-size: 25px;
    font-weight: 600;
-
-   @include breakpoint(desktop) {
-     font-size: 30px;
-   }
+   margin: 20px 0px;
  }
 
- .reportData .footer div a {
-   color: #0799D8;
-   font-weight: 700;
+ .topics .topicsList {
+   font-size: 14px !important;
+   //  font-weight: 600;
+ }
+
+ .css-1baulvz {
+   position: absolute;
+   top: 10px;
+   left: 10px;
+ }
+
+ .tooltip {
+   padding: 10px !important;
+   border-radius: 10px !important;
+   position: absolute !important;
+   width: 200px !important;
+   left: -100px;
+   top: -10px;
+   background-color: #007fe7 !important;
+   color: white !important;
  }

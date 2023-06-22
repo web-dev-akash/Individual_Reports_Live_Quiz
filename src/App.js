@@ -1,9 +1,9 @@
 import "./App.scss";
-import { Reports } from "./components/Reports";
+import { NavigationBar } from "./components/NavigationBar";
 export const App = () => {
   return (
     <div className="App">
-      <Reports />
+      <NavigationBar />
     </div>
   );
 };
