@@ -44,7 +44,9 @@ export const Science = () => {
       return;
     }
     setLoading(true);
-    fetch(`https://wisechamps.onrender.com/reports?email=${email}`)
+    fetch(
+      `http://ec2-43-205-142-125.ap-south-1.compute.amazonaws.com/reports?email=${email}`
+    )
       .then((res) => res.json())
       .then((res) => {
         setLoading(false);

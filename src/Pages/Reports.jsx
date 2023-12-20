@@ -67,7 +67,7 @@ export const Reports = () => {
       }
       setLoading(true);
       const res = await fetch(
-        `https://backend.wisechamps.com/reports?email=${email}`
+        `http://ec2-43-205-142-125.ap-south-1.compute.amazonaws.com/reports?email=${email}`
       );
 
       const res2 = await res.json();
@@ -134,7 +134,7 @@ export const Reports = () => {
       }
       const today = new Date();
       const res = await fetch(
-        `https://backend.wisechamps.com/previousReport?email=${email}`
+        `http://ec2-43-205-142-125.ap-south-1.compute.amazonaws.com/previousReport?email=${email}`
       );
       const res2 = await res.json();
       const response = res2.data;
