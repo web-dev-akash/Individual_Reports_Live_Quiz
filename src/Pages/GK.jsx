@@ -44,7 +44,7 @@ export const GK = () => {
       return;
     }
     setLoading(true);
-    fetch(`https://wisechamps.onrender.com/reports?email=${email}`)
+    fetch(`https://backend.wisechamps.com/reports?email=${email}`)
       .then((res) => res.json())
       .then((res) => {
         setLoading(false);
