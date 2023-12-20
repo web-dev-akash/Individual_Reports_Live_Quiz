@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="78745b24-53a5-4130-8e19-dd8969b8c63c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/English.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GK.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Maths.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reports.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Science.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2ZnxZcU8eeXPjLmURJFIY4EEgrv" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="78745b24-53a5-4130-8e19-dd8969b8c63c" name="Changes" comment="" />
+      <created>1703071702631</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1703071702631</updated>
+    </task>
+    <servers />
+  </component>
+</project>

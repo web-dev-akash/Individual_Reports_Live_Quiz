@@ -1,10 +1,10 @@
 import React from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { Reports } from "./Reports";
-import { Maths } from "./Maths";
-import { English } from "./English";
-import { Science } from "./Science";
-import { GK } from "./GK";
+import { Reports } from "../Pages/Reports";
+import { Maths } from "../Pages/Maths";
+import { English } from "../Pages/English";
+import { Science } from "../Pages/Science";
+import { GK } from "../Pages/GK";
 
 export const NavigationBar = () => {
   return (

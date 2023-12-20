@@ -1,5 +1,5 @@
 import "./App.scss";
-import { NavigationBar } from "./components/NavigationBar";
+import { NavigationBar } from "./Components/NavigationBar";
 export const App = () => {
   return (
     <div className="App">

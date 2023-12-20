@@ -29,6 +29,8 @@ export const Reports = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [label, setLabel] = useState("");
+  const watiToken = process.env.REACT_APP_WATI_TOKEN;
+  const watiAPI = process.env.REACT_APP_WATI_API;
   // const [marginIndex, setMarginIndex] = useState(0);
   // const [finalIndex, setFinalIndex] = useState(0);
   // const [percentage, setPercentage] = useState(false);
@@ -63,51 +65,93 @@ export const Reports = () => {
         setData(sampleObj);
         return;
       }
-      const res = await fetch(
-        `https://wisechamps.onrender.com/reports?email=${email}`
-      );
-
       setLoading(true);
-      const res2 = await res.json();
-      setData(res2.user);
-      setRank(res2.user[0].rank);
-      setLoading(false);
-      res2.user[0].rank <= 10 &&
-        toast({
-          position: "top",
-          colorScheme: "whatsapp",
-          duration: 3000,
-          isClosable: true,
-          title: (
-            <div
-              style={{
-                textAlign: "center",
-              }}
-            >
-              <h1 style={{ fontSize: "25px" }}>Congratulations!</h1>
-              <h3
+      const res = await fetch(
+        `https://backend.wisechamps.com/reports?email=${email}`
+      );
+      if (res.status === 200) {
+        const res2 = await res.json();
+        setData(res2.user);
+        console.log(res2.user);
+        setRank(res2.user[0].rank);
+        setLoading(false);
+        res2.user[0].rank <= 10 &&
+          toast({
+            position: "top",
+            colorScheme: "whatsapp",
+            duration: 3000,
+            isClosable: true,
+            title: (
+              <div
                 style={{
-                  fontSize: "20px",
-                  margin: "10px 0",
+                  textAlign: "center",
                 }}
               >
-                {res2.user[0].name}
-              </h3>
-            </div>
-          ),
-          description: (
-            <p
-              style={{
-                textAlign: "center",
-                fontSize: "14px",
-              }}
-            >
-              You have achieved a remarkable feat by securing a spot in the top
-              10.
-            </p>
-          ),
-        });
-      return;
+                <h1 style={{ fontSize: "25px" }}>Congratulations!</h1>
+                <h3
+                  style={{
+                    fontSize: "20px",
+                    margin: "10px 0",
+                  }}
+                >
+                  {res2.user[0].name}
+                </h3>
+              </div>
+            ),
+            description: (
+              <p
+                style={{
+                  textAlign: "center",
+                  fontSize: "14px",
+                }}
+              >
+                You have achieved a remarkable feat by securing a spot in the
+                top 10.
+              </p>
+            ),
+          });
+        return;
+      } else {
+        setRank("NA");
+        const body = JSON.stringify([
+          {
+            name: "parent_email",
+            operator: "contain",
+            value: email,
+          },
+        ]);
+        const response = await fetch(
+          `${watiAPI}/api/v1/getContacts?attribute=${body}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: watiToken,
+            },
+          }
+        );
+        if (response.status === 200) {
+          const response2 = await response.json();
+          console.log(response2);
+          let name = response2.contact_list[0].fullName;
+          let getGrade = response2.contact_list[0].customParams.filter(
+            (param) => param.name === "student_grade"
+          );
+          let grade = getGrade[0].value;
+          // for (let i = 0; i < getGrade.length; i++)
+          setData([
+            {
+              name,
+              grade,
+              attempted: 0,
+              correct: 0,
+              percent: 0,
+              polled: 0,
+            },
+          ]);
+          setLoading(false);
+          return;
+        }
+      }
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -133,11 +177,11 @@ export const Reports = () => {
       }
       const today = new Date();
       const res = await fetch(
-        `https://wisechamps.onrender.com/previousReport?email=${email}`
+        `https://backend.wisechamps.com/previousReport?email=${email}`
       );
       const res2 = await res.json();
       const response = res2.data;
-      if (response.length > 0) {
+      if (res && res2 && response.length > 0) {
         const value = res2.data[0].date.split("/");
         const date = new Date(value[2], value[1], value[0]);
         let totalDays = today.getDate() - date.getDate();
