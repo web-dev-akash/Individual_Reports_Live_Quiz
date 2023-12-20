@@ -133,7 +133,9 @@ export const Reports = () => {
         return;
       }
       const today = new Date();
-      const res = await fetch(`/backend/previousReport?email=${email}`);
+      const res = await fetch(
+        `http://ec2-43-205-142-125.ap-south-1.compute.amazonaws.com/previousReport?email=${email}`
+      );
       const res2 = await res.json();
       const response = res2.data;
       if (res && res2 && response.length > 0) {
