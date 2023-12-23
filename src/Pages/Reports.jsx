@@ -56,6 +56,8 @@ export const Reports = () => {
         setRank(1);
         const sampleObj = [
           {
+            name: "Akash",
+            grade: 5,
             correct: 850,
             percent: 85,
             polled: 900,
@@ -129,7 +131,7 @@ export const Reports = () => {
           previousCorrect,
           previousPercent,
         });
-        setLastAccess(0);
+        setLastAccess(1);
         return;
       }
       const today = new Date();
